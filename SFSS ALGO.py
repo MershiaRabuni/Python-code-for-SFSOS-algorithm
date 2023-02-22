@@ -27,8 +27,14 @@ def sfs_union(m1, m2):
         return (result)
     
 def sfs_int(m1, m2):
-    result = [[((min(m1[r][c][0], m2[r][c][0])), (min(m1[r][c][1], m2[r][c][1])), (max(m1[r][c][2], m2[r][c][2]))) for c in range(columns)] for r in range(rows)]
-    return (result)
+    for i in range(rows):
+        for j in range(columns):
+            if (m1[i][j][0] == 1 or m2[i][j][0] == 1):
+                result = [[((min(m1[r][c][0], m2[r][c][0])), (max(m1[r][c][1], m2[r][c][1])), (max(m1[r][c][2], m2[r][c][2]))) for c in range(columns)] for r in range(rows)]
+                return(result)
+            else:
+                result = [[((min(m1[r][c][0], m2[r][c][0])), (min(m1[r][c][1], m2[r][c][1])), (max(m1[r][c][2], m2[r][c][2]))) for c in range(columns)] for r in range(rows)]
+                return (result)
 
 def subset(m, A):
     if (m[i][j][0] == 1):
